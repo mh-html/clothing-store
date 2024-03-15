@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Button,
@@ -10,10 +12,18 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 
-import loginImage from "../../../public/images/login.jpg";
+import loginImage from "../../../../public/images/login.jpg";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Login() {
+  const [email, setEmail] = useState<string | null>(null);
+  const [password, setPassword] = useState<string | null>(null);
+  const [rememberMe, setRememberMe] = useState<boolean>(true);
+
+  const loginHandler = (): void => {
+    console.log(email, password, "rememberMe :", rememberMe);
+  };
   return (
     <Container>
       <Stack
@@ -34,12 +44,18 @@ export default function Login() {
             </Typography>
           </Box>
           <Box display="flex" flexDirection="column" gap={2} my={4}>
-            <TextField id="outlined-basic" label="Email" variant="outlined" />
             <TextField
-              id="outlined-basic"
+              label="Email"
+              variant="outlined"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField
               type="password"
               label="Password"
               variant="outlined"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <Box
               display="flex"
@@ -47,13 +63,24 @@ export default function Login() {
               alignItems="center"
             >
               <FormControlLabel
-                control={<Checkbox defaultChecked />}
+                control={
+                  <Checkbox
+                    value={rememberMe}
+                    onChange={(e) => setRememberMe(e.currentTarget.checked)}
+                  />
+                }
                 label="Remember Me"
               />
               <Link href="/forgot-password">Forgot Password?</Link>
             </Box>
           </Box>
-          <Button variant="contained" fullWidth color="primary" size="large">
+          <Button
+            variant="contained"
+            fullWidth
+            color="primary"
+            size="large"
+            onClick={loginHandler}
+          >
             Login
           </Button>
         </Box>

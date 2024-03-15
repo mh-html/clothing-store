@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Button,
@@ -9,9 +10,14 @@ import {
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Image from "next/image";
 import Link from "next/link";
-import forgotPasswordImage from "../../../public/images/forgot-password.jpg";
+import forgotPasswordImage from "../../../../public/images/forgot-password.jpg";
+import { useState } from "react";
 
 export default function ForgotPassword() {
+  const [email, setEmail] = useState<string | null>(null);
+  const forgotPasswordHadler = (): void => {
+    console.log(email);
+  };
   return (
     <Container>
       <Stack
@@ -41,9 +47,20 @@ export default function ForgotPassword() {
             </Typography>
           </Box>
           <Box display="flex" flexDirection="column" gap={2} my={4}>
-            <TextField id="outlined-basic" label="Email" variant="outlined" />
+            <TextField
+              label="Email"
+              variant="outlined"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </Box>
-          <Button variant="contained" fullWidth color="primary" size="large">
+          <Button
+            variant="contained"
+            fullWidth
+            color="primary"
+            size="large"
+            onClick={forgotPasswordHadler}
+          >
             Send OTP
           </Button>
         </Box>
