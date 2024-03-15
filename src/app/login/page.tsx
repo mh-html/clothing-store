@@ -4,6 +4,7 @@ import {
   Checkbox,
   Container,
   FormControlLabel,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,17 +16,15 @@ import Link from "next/link";
 export default function Login() {
   return (
     <Container>
-      <Box
+      <Stack
         my={4}
-        display="flex"
+        direction={{ xs: "column", sm: "row" }}
         alignItems="center"
-        gap={4}
+        spacing={4}
         sx={{ bgcolor: "white" }}
       >
-        <Box>
-          <Image height={667} width={550} alt="login-image" src={loginImage} />
-        </Box>
-        <Box width={500}>
+        <Image height={667} width={550} alt="login-image" src={loginImage} />
+        <Box p={2} flex={1}>
           <Box>
             <Typography variant="h4" fontWeight="bold">
               Welcome 👋
@@ -58,7 +57,7 @@ export default function Login() {
             Login
           </Button>
         </Box>
-      </Box>
+      </Stack>
     </Container>
   );
 }

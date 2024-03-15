@@ -1,36 +1,38 @@
-import { Box, Button, Container, TextField, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import Image from "next/image";
-
-import forgotPasswordImage from "../../../public/images/forgot-password.jpg";
 import Link from "next/link";
+import forgotPasswordImage from "../../../public/images/forgot-password.jpg";
 
 export default function ForgotPassword() {
   return (
     <Container>
-      <Box
+      <Stack
         my={4}
-        display="flex"
+        direction={{ xs: "column", sm: "row" }}
         alignItems="center"
         gap={4}
         sx={{ bgcolor: "white" }}
       >
-        <Box>
-          <Image
-            height={667}
-            width={550}
-            alt="forgot-passwordImage-image"
-            src={forgotPasswordImage}
-          />
-        </Box>
-        <Box width={500}>
+        <Image
+          height={667}
+          width={550}
+          alt="forgot-passwordImage-image"
+          src={forgotPasswordImage}
+        />
+        <Box p={2} flex={1}>
           <Box>
-            <Button size="small" variant="text" sx={{ margin: "16px 0" }}>
-              <Link href="/login">
-                <ArrowBackIosIcon /> Back
-              </Link>
-            </Button>
-            <Typography variant="h4" fontWeight="bold">
+            <Link href="/login">
+              <ArrowBackIosIcon /> Back
+            </Link>
+            <Typography variant="h4" fontWeight="bold" mt={4}>
               Forgot Password
             </Typography>
             <Typography my={2} variant="body1" color="gray">
@@ -45,7 +47,7 @@ export default function ForgotPassword() {
             Send OTP
           </Button>
         </Box>
-      </Box>
+      </Stack>
     </Container>
   );
 }
