@@ -35,25 +35,23 @@ export default function EnterOpt() {
     <Container>
       <Stack
         my={4}
-        direction={{ xs: "column", sm: "row" }}
+        direction="row"
         alignItems="center"
         gap={4}
         sx={{ bgcolor: "white" }}
       >
         <Image height={667} width={550} alt="enter-opt-image" src={enterOpt} />
-        <Box p={2} flex={1}>
-          <Box>
-            <Link href="/forgot-password">
-              <ArrowBackIosIcon /> Back
-            </Link>
-            <Typography variant="h4" fontWeight="bold" mt={4}>
-              Enter OTP
-            </Typography>
-            <Typography my={2} variant="body1" color="gray">
-              We have share a code of your registered email address
-              robertfox@example.com
-            </Typography>
-          </Box>
+        <Stack>
+          <Link href="/forgot-password">
+            <ArrowBackIosIcon /> Back
+          </Link>
+          <Typography variant="h4" fontWeight="bold" mt={4}>
+            Enter OTP
+          </Typography>
+          <Typography my={2} variant="body1" color="gray">
+            We have share a code of your registered email address
+            robertfox@example.com
+          </Typography>
           <TextField
             fullWidth
             type="number"
@@ -69,25 +67,23 @@ export default function EnterOpt() {
           >
             Verify
           </Button>
-        </Box>
+        </Stack>
       </Stack>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+      <Dialog open={open} onClose={handleClose}>
         <CheckCircleIcon sx={{ fontSize: "44px", margin: "0 auto" }} />
-        <DialogTitle id="alert-dialog-title">
-          {"Password Changed Successfully"}
-        </DialogTitle>
+        <DialogTitle>Password Changed Successfully</DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+          <DialogContentText>
             Your password has been updated successfully
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="contained" onClick={handleClose} fullWidth>
+          <Button
+            variant="contained"
+            onClick={handleClose}
+            fullWidth
+            href="/login"
+          >
             Back to Login
           </Button>
         </DialogActions>

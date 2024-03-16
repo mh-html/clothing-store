@@ -34,67 +34,63 @@ export default function Signup() {
     <Container>
       <Stack
         my={4}
-        direction={{ xs: "column", sm: "row" }}
+        direction="row"
         alignItems="center"
         gap={4}
         sx={{ bgcolor: "white" }}
       >
-        <Image height={667} width={550} alt="signup-image" src={signupImage} />
-        <Box p={2} flex={1}>
-          <Box>
-            <Typography variant="h4" fontWeight="bold">
-              Create New Account
+        <Image height={600} width={500} alt="signup-image" src={signupImage} />
+        <Stack width="100%" gap={2}>
+          <Typography variant="h4" fontWeight="bold">
+            Create New Account
+          </Typography>
+          <Typography variant="body1">Please enter details</Typography>
+          <TextField
+            label="First Name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            variant="outlined"
+          />
+          <TextField
+            label="Last Name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            variant="outlined"
+          />
+          <TextField
+            label="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            variant="outlined"
+          />
+          <TextField
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            variant="outlined"
+          />
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  value={agreeCondition}
+                  onChange={(e) => setAgreeCondition(e.currentTarget.checked)}
+                />
+              }
+              label="I agree to the Terms & Conditions"
+              sx={{ color: "black" }}
+            />
+          </Box>
+          {errorAgree && !agreeCondition && (
+            <Typography variant="subtitle1" color="red">
+              Please agree to the Terms & Conditions !
             </Typography>
-            <Typography variant="body1">Please enter details</Typography>
-          </Box>
-          <Box display="flex" flexDirection="column" gap={2} my={4}>
-            <TextField
-              label="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              variant="outlined"
-            />
-            <TextField
-              label="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              variant="outlined"
-            />
-            <TextField
-              label="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              variant="outlined"
-            />
-            <TextField
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              label="Password"
-              variant="outlined"
-            />
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    value={agreeCondition}
-                    onChange={(e) => setAgreeCondition(e.currentTarget.checked)}
-                  />
-                }
-                label="I agree to the Terms & Conditions"
-                sx={{ color: "black" }}
-              />
-            </Box>
-            {errorAgree && !agreeCondition && (
-              <Typography variant="subtitle1" color="red">
-                Please agree to the Terms & Conditions !
-              </Typography>
-            )}
-          </Box>
+          )}
           <Button
             variant="contained"
             fullWidth
@@ -104,7 +100,7 @@ export default function Signup() {
           >
             Signup
           </Button>
-        </Box>
+        </Stack>
       </Stack>
     </Container>
   );

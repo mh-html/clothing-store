@@ -2,6 +2,8 @@ import Navbar from "@/components/Navbar";
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import hero from "../../public/images/hero.png";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function Home() {
   return (
@@ -26,6 +28,24 @@ export default function Home() {
           </Box>
           <Image height={600} alt="hero" src={hero} />
         </Stack>
+        <Box my={4}>
+          <Stack flexDirection="row" justifyContent="space-between">
+            <Typography variant="h3">Shop by Categories</Typography>
+            <Stack
+              flexDirection="row"
+              justifyContent="space-between"
+              alignItems="center"
+              gap={2}
+            >
+              <Button variant="contained">
+                <ArrowBackIcon />
+              </Button>
+              <Button variant="contained">
+                <ArrowForwardIcon />
+              </Button>
+            </Stack>
+          </Stack>
+        </Box>
       </Container>
     </>
   );
